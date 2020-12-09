@@ -15,11 +15,9 @@ function App() {
     },[]);
 
     return (
-      <div className="App">
-        <div className="center">
+        <div className="App">
             <HandleMessage messageQueue={messageQueue.split(' ')}/>
         </div>
-      </div>
     );
 }
 
