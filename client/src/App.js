@@ -2,7 +2,7 @@ import './App.css';
 import React, {useEffect, useState} from 'react';
 import HandleMessage from "./HandleMessage";
 
-export const socket = new WebSocket('ws://localhost:8080')
+export const socket = new WebSocket(process.env.REACT_APP_WS_URI);
 
 function App() {
 

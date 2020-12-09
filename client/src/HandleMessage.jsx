@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import WaitingPage from "./WaitingPage";
-import LoginPage from "./LoginPage";
-import Game from "./Game";
+import Page from "./components/HandleSocket/Page";
+
 
 const HandleMessage = ({ messageQueue }) => {
 
@@ -9,19 +8,6 @@ const HandleMessage = ({ messageQueue }) => {
     const [ isHost, setIsHost ] = useState(false);
     const [ nameList, setNameList ] = useState([]);
     const [ roomCode, setRoomCode ] = useState('');
-
-    const Page = ({ to }) => {
-        switch(to) {
-            case 'LoginPage':
-                return <LoginPage/>
-            case 'WaitingPage':
-                return <WaitingPage isHost={isHost} nameList={nameList} code={roomCode}/>
-            case 'Game':
-                return <Game/>
-            default:
-                return <h2>default</h2>
-        }
-    }
 
     useEffect(() => {
         console.log(`whole message = ${messageQueue}`);
@@ -52,7 +38,12 @@ const HandleMessage = ({ messageQueue }) => {
 
     return (
         <div>
-            <Page to={direct}/>
+            <Page
+                direct={direct}
+                isHost={isHost}
+                nameList={nameList}
+                roomCode={roomCode}
+            />
         </div>
     );
 
